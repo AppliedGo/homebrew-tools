@@ -5,28 +5,36 @@
 class Goman < Formula
   desc "The missing man pages for Go binaries"
   homepage "https://github.com/appliedgocode/goman"
-  version "0.2.4"
+  version "0.3.0"
   license "BSD-3-Clause"
-  bottle :unneeded
 
-  if OS.mac? && Hardware::CPU.intel?
-    url "https://github.com/appliedgocode/goman/releases/download/v0.2.4/goman_0.2.4_Darwin_x86_64.tar.gz"
-    sha256 "fd487287f404fb5f86861033a613fbf9a41865b365865d12e328c1bf9d26caac"
-  end
-  if OS.mac? && Hardware::CPU.arm?
-    url "https://github.com/appliedgocode/goman/releases/download/v0.2.4/goman_0.2.4_Darwin_arm64.tar.gz"
-    sha256 "e78a0015e8c60180f19f77dc4c6e1590b04024a3a62d6db663f365a205593dd3"
-  end
-  if OS.linux? && Hardware::CPU.intel?
-    url "https://github.com/appliedgocode/goman/releases/download/v0.2.4/goman_0.2.4_Linux_x86_64.tar.gz"
-    sha256 "3ecb462a56e99864710f3c20517544f69af09c99348a456c1c6445baa1feed07"
-  end
-  if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://github.com/appliedgocode/goman/releases/download/v0.2.4/goman_0.2.4_Linux_arm64.tar.gz"
-    sha256 "bea6fd8b967e5034b291cd51f3864f607e139f5d7707f314035c1a41a06942ad"
+  on_macos do
+    if Hardware::CPU.intel?
+      url "https://github.com/appliedgocode/goman/releases/download/v0.3.0/goman_0.3.0_Darwin_x86_64.tar.gz"
+      sha256 "3d7bfe0fc945843f882983632d08ce952a20b82cbf0d23a8c592e53bcc36d167"
+
+      def install
+        bin.install "goman"
+      end
+    end
   end
 
-  def install
-    bin.install "goman"
+  on_linux do
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/appliedgocode/goman/releases/download/v0.3.0/goman_0.3.0_Linux_arm64.tar.gz"
+      sha256 "d17df59b95cbc03015ef8d4f3e0288c9d1cdca166bd46f875867496b7cfb9e79"
+
+      def install
+        bin.install "goman"
+      end
+    end
+    if Hardware::CPU.intel?
+      url "https://github.com/appliedgocode/goman/releases/download/v0.3.0/goman_0.3.0_Linux_x86_64.tar.gz"
+      sha256 "d0444a2dc320bb009d790ab3d025823f0903caf290cc5be2417e7417223799f1"
+
+      def install
+        bin.install "goman"
+      end
+    end
   end
 end
