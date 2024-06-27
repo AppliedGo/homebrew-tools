@@ -5,13 +5,21 @@
 class Goman < Formula
   desc "The missing man pages for Go binaries"
   homepage "https://github.com/appliedgocode/goman"
-  version "0.3.0"
+  version "0.3.1"
   license "BSD-3-Clause"
 
   on_macos do
-    if Hardware::CPU.intel?
-      url "https://github.com/appliedgocode/goman/releases/download/v0.3.0/goman_0.3.0_Darwin_x86_64.tar.gz"
-      sha256 "3d7bfe0fc945843f882983632d08ce952a20b82cbf0d23a8c592e53bcc36d167"
+    on_intel do
+      url "https://github.com/appliedgocode/goman/releases/download/v0.3.1/goman_0.3.1_darwin_amd64.tar.gz"
+      sha256 "1d50b918bc2d5f36d8895f548cfa0984d425a57dd2706a4c63d3645d444cf852"
+
+      def install
+        bin.install "goman"
+      end
+    end
+    on_arm do
+      url "https://github.com/appliedgocode/goman/releases/download/v0.3.1/goman_0.3.1_darwin_arm64.tar.gz"
+      sha256 "1600d307073a07f5ebbd115e12041277359a4587a349427e0450ff741a761d87"
 
       def install
         bin.install "goman"
@@ -20,20 +28,24 @@ class Goman < Formula
   end
 
   on_linux do
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/appliedgocode/goman/releases/download/v0.3.0/goman_0.3.0_Linux_arm64.tar.gz"
-      sha256 "d17df59b95cbc03015ef8d4f3e0288c9d1cdca166bd46f875867496b7cfb9e79"
+    on_intel do
+      if Hardware::CPU.is_64_bit?
+        url "https://github.com/appliedgocode/goman/releases/download/v0.3.1/goman_0.3.1_linux_amd64.tar.gz"
+        sha256 "1c37ff9d510a9bfe360aca210e1b010343a3b9bc59f816aed6b12aebaff5e79d"
 
-      def install
-        bin.install "goman"
+        def install
+          bin.install "goman"
+        end
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/appliedgocode/goman/releases/download/v0.3.0/goman_0.3.0_Linux_x86_64.tar.gz"
-      sha256 "d0444a2dc320bb009d790ab3d025823f0903caf290cc5be2417e7417223799f1"
+    on_arm do
+      if Hardware::CPU.is_64_bit?
+        url "https://github.com/appliedgocode/goman/releases/download/v0.3.1/goman_0.3.1_linux_arm64.tar.gz"
+        sha256 "bd99735ae49ecdf646628ccf714e4faf87891a98525ce037c6e8899a991bde46"
 
-      def install
-        bin.install "goman"
+        def install
+          bin.install "goman"
+        end
       end
     end
   end
