@@ -5,24 +5,26 @@
 class Goman < Formula
   desc "The missing man pages for Go binaries"
   homepage "https://github.com/appliedgocode/goman"
-  version "0.3.2"
+  version "0.4.0"
   license "BSD-3-Clause"
 
   on_macos do
     on_intel do
-      url "https://github.com/appliedgocode/goman/releases/download/v0.3.2/goman_0.3.2_darwin_amd64.tar.gz"
-      sha256 "d2db7a7a139ea0e677d8b0f13b8048e9cb1c908addba7a5bf23c1201d5bbe331"
+      url "https://github.com/appliedgocode/goman/releases/download/v0.4.0/goman_0.4.0_darwin_amd64.tar.gz"
+      sha256 "e1900e9c3e5d65c56474650a85ccae6998ded2ff9f53de7fbf2a81393c744073"
 
       def install
         bin.install "goman"
+        man1.install "goman.1"
       end
     end
     on_arm do
-      url "https://github.com/appliedgocode/goman/releases/download/v0.3.2/goman_0.3.2_darwin_arm64.tar.gz"
-      sha256 "43168a1408941ba83cbb97c0ae7fc731bbf07d36dfef7a5a6443e6e847b2379f"
+      url "https://github.com/appliedgocode/goman/releases/download/v0.4.0/goman_0.4.0_darwin_arm64.tar.gz"
+      sha256 "b1f865ad210da92b2ef69fc0ad84a98cfb9717744588c40ac87acd568ecfc7f1"
 
       def install
         bin.install "goman"
+        man1.install "goman.1"
       end
     end
   end
@@ -30,21 +32,23 @@ class Goman < Formula
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/appliedgocode/goman/releases/download/v0.3.2/goman_0.3.2_linux_amd64.tar.gz"
-        sha256 "4be7ca3ad1ee7224a0bade869e1cb3a32d374948f356ed23531fdb25b003b5d1"
+        url "https://github.com/appliedgocode/goman/releases/download/v0.4.0/goman_0.4.0_linux_amd64.tar.gz"
+        sha256 "05cc588a8ff07627d3f1ed72b3dac9ad86c5f1499fa2b4c1dbbc9c403467e44f"
 
         def install
           bin.install "goman"
+          man1.install "goman.1"
         end
       end
     end
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/appliedgocode/goman/releases/download/v0.3.2/goman_0.3.2_linux_arm64.tar.gz"
-        sha256 "3a2cf18b94634b34d211afed9044e41104e9234ae3dec08c7d4a93de90404dfe"
+        url "https://github.com/appliedgocode/goman/releases/download/v0.4.0/goman_0.4.0_linux_arm64.tar.gz"
+        sha256 "dc87276cdd232ac79758001266521a735e37c422feb921bec8b31b638045695a"
 
         def install
           bin.install "goman"
+          man1.install "goman.1"
         end
       end
     end
